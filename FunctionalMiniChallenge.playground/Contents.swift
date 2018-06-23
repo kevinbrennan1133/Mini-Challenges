@@ -41,14 +41,12 @@ var students: [Student] = [
 ]
 
 // TODO: - Create an array that contains only the freshmen from the student array using the filter function
-let freshman = Student.filter{ $0.year("freshman")}
-
+let freshman = students.filter{$0.year == .freshman}
 
 
 // TODO: - Create an array that contains only the full names (first name concatenated with the last name) from the student array using the map function
-let names = students.flatMap($0.firstName + $0.lastName)
+let names = students.map{$0.firstName + " " + $0.lastName}
 
 
 // TODO: - Return the average grade from all the students using the reduce function divided by the count
-let grades =  students.reduce(0, {($0+$1/.count)})
-
+let grades =  students.reduce(0, {$0 + $1.grade}) / students.count
